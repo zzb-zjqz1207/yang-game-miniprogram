@@ -28,13 +28,30 @@ Page({
   createCardPool() {
     const cardPool = [];
     const cardsPerType = 9;
+    const poolWidth = 320;
+    const poolHeight = 400;
+    const cardWidth = 50;
+    const cardHeight = 60;
+    const layers = 4;
+    const cardsPerLayer = Math.ceil((cardsPerType * this.data.cardSymbols.length) / layers);
 
     this.data.cardSymbols.forEach(symbol => {
       for (let i = 0; i < cardsPerType; i++) {
+        const index = cardPool.length;
+        const layer = Math.floor(index / cardsPerLayer);
+        const layerOffsetX = layer * 6;
+        const layerOffsetY = layer * 5;
+        
+        // 确定性随机位置
+        const randomX = Math.abs(Math.sin(index * 17) * (poolWidth - cardWidth - 30));
+        const randomY = Math.abs(Math.cos(index * 23) * (poolHeight - cardHeight - 30));
+        
         cardPool.push({
           id: Math.random().toString(36).substr(2, 9),
           symbol: symbol,
-          matched: false
+          matched: false,
+          x: 15 + randomX + layerOffsetX,
+          y: 15 + randomY + layerOffsetY
         });
       }
     });

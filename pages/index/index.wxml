@@ -14,7 +14,7 @@
       class="card"
       data-id="{{item.id}}"
       bindtap="clickCard"
-      style="transform: translate({{item.offsetX || 0}}px, {{item.offsetY || 0}}px); z-index: {{index}};"
+      style="left: {{item.x || 0}}px; top: {{item.y || 0}}px; z-index: {{index}};"
     >
       {{item.symbol}}
     </view>
