@@ -1,0 +1,13 @@
+{
+  "pages": [
+    "pages/index/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#667eea",
+    "navigationBarTitleText": "羊羊消消乐",
+    "navigationBarTextStyle": "white"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

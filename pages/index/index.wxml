@@ -1,0 +1,63 @@
+<view class="game-container">
+  <view class="header">
+    <view class="title">🐑 羊羊消消乐</view>
+    <view class="score-board">
+      <text>关卡：{{level}}</text>
+      <text>得分：{{score}}</text>
+    </view>
+  </view>
+
+  <view class="card-pool">
+    <view 
+      wx:for="{{cardPool}}" 
+      wx:key="id" 
+      class="card"
+      data-id="{{item.id}}"
+      bindtap="clickCard"
+      style="transform: translate({{item.offsetX || 0}}px, {{item.offsetY || 0}}px); z-index: {{index}};"
+    >
+      {{item.symbol}}
+    </view>
+  </view>
+
+  <view class="slot-container">
+    <view class="slot">
+      <view 
+        wx:for="{{slot}}" 
+        wx:key="id" 
+        class="card slot-card"
+        data-index="{{index}}"
+        bindtap="clickSlotCard"
+      >
+        {{item.symbol}}
+      </view>
+    </view>
+  </view>
+
+  <view class="tools">
+    <view class="tool-btn" bindtap="undo">
+      ↩️ 撤销
+      <view class="count">{{undoCount}}</view>
+    </view>
+    <view class="tool-btn" bindtap="shuffle">
+      🔄 洗牌
+      <view class="count">{{shuffleCount}}</view>
+    </view>
+    <view class="tool-btn" bindtap="removeThree">
+      ❌ 移除
+      <view class="count">{{removeCount}}</view>
+    </view>
+  </view>
+
+  <view class="controls">
+    <button class="action-btn" bindtap="restart">🔄 重新开始</button>
+  </view>
+
+  <view class="modal" wx:if="{{showModal}}">
+    <view class="modal-content">
+      <text class="modal-title">{{modalTitle}}</text>
+      <text class="modal-message">{{modalMessage}}</text>
+      <button class="action-btn" bindtap="restartFromModal">再来一局</button>
+    </view>
+  </view>
+</view>
